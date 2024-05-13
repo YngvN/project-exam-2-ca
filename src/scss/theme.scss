@@ -1,0 +1,46 @@
+$primary-color: #6DEAFA;
+$secondary-color: #032B57;
+
+$white: #ffff;
+$black: #000000;
+$grey: #CECECE;
+
+$green: #51CC4E;
+$background: #EBF5EE;
+
+$lighten: 5;
+$darken: 25;
+
+$colors: (
+    primary: (base: $primary-color,
+        light: lighten($primary-color, $lighten),
+        darken: darken($primary-color, $darken),
+    ),
+    secondary: (base: $secondary-color,
+        light: lighten($secondary-color, $lighten),
+        darken: darken($secondary-color, $darken),
+    ),
+);
+
+$colors-light: (
+    primary: (base: $primary-color,
+        light: lighten($primary-color, $lighten),
+        darken: darken($primary-color, $darken),
+    ),
+    secondary: (base: $secondary-color,
+        light: lighten($secondary-color, $lighten),
+        darken: darken($secondary-color, $darken),
+    ),
+    background: $white,
+);
+$colors-dark: (
+    primary: (base: $primary-color,
+        light: lighten($primary-color, $lighten),
+        darken: darken($primary-color, $darken),
+    ),
+    secondary: (base: $secondary-color,
+        light: lighten($secondary-color, $lighten),
+        darken: darken($secondary-color, $darken),
+    ),
+    background: $black,
+);

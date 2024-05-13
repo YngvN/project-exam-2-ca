@@ -1,0 +1,17 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+
+
+
+    .form-check {
+        text-align: left;
+    }
+
+    .form-floating {
+        margin: 0;
+        margin-bottom: 1em;
+    }
+}

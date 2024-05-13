@@ -1,0 +1,22 @@
+@import "./btnBack.scss";
+@import "../../theme.scss";
+
+button {
+    margin-bottom: 1em;
+}
+
+.profile-info-container {
+    .btn-primary {
+        width: 100%;
+    }
+}
+
+.btn-primary {
+    background-color: $primary-color !important;
+    border: none;
+
+    &:hover {
+        background-color: $green !important;
+        box-shadow: 2px 5px 10px $black;
+    }
+}

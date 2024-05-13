@@ -1,0 +1,26 @@
+@import "./components/components.scss";
+@import "./theme.scss";
+@import "./sections/sections.scss";
+@import "./pages/pages.scss";
+@import "./containers/containers.scss";
+
+
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    font-family: system-ui;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    background-color: $background;
+}
+
+img,
+svg,
+video {
+    max-width: 100%;
+    display: block;
+}

@@ -1,0 +1,15 @@
+.btn-back {
+    display: flex;
+    padding: 1em;
+    padding-left: 0;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    width: fit-content;
+    margin-bottom: 4px;
+
+    .icon {
+        height: 50px;
+        margin-bottom: -5px;
+    }
+}
