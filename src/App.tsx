@@ -5,6 +5,7 @@ import { Layout } from './sections/layout';
 import Home from './pages/home/home';
 import Booking from './pages/booking/booking';
 import Profile from './pages/profile/profile';
+import Venue from './pages/venue/venue';
 
 import { LoginLayout } from './pages/login/loginLayout';
 import Login from './pages/login/login';
@@ -31,6 +32,7 @@ function App() {
           <Route path='home' element={<Home />} />
           <Route path="profile" element={<Profile />} />
           <Route path="booking" element={<Booking />} />
+          <Route path="venue/:id" element={<Venue />} />
           <Route path="*" element={<RouteNotFound />} />
         </Route>
       </Routes>

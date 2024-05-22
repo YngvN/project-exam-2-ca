@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Navbar, Nav, NavDropdown, Row, Col } from "react-bootstrap";
 import Placeholder from "../imgProfilePlaceholder.png";
 import iconX from "../iconX.png";
 import logo from "../logo.png";
-import { Row } from "react-bootstrap";
 
-export function Nav() {
+export function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
     const [profileImg, setProfileImg] = useState(null);
     const [username, setUsername] = useState('');
@@ -17,11 +17,9 @@ export function Nav() {
             const userDataObj = JSON.parse(userData);
 
             if (userDataObj.data.avatar && userDataObj.data.avatar.url) {
-
                 setProfileImg(userDataObj.data.avatar.url);
             }
             setUsername(userDataObj.data.name);
-
         }
     }, []);
 
@@ -40,55 +38,36 @@ export function Nav() {
     };
 
     return (
-        <nav>
-            <Row className="links-desktop">
-                <ul>
-                    <li>
-                        <Link to="/home" onClick={closeDropdown}>Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/profile" onClick={closeDropdown}>My profile</Link>
-                    </li>
-                    <li>
-                        <Link to="/booking" onClick={closeDropdown}>Booking</Link>
-                    </li>
-                </ul>
+        <Navbar expand="lg" className="navigation">
+            <Row className="nav-row">
+                {/* <Col md={8} className="d-none d-md-block"> */}
+                <Nav className="mr-auto desktop-links">
+                    <Nav.Link as={Link} to="/home" onClick={closeDropdown}>Home</Nav.Link>
+                    <Nav.Link as={Link} to="/profile" onClick={closeDropdown}>My Profile</Nav.Link>
+                    <Nav.Link as={Link} to="/booking" onClick={closeDropdown}>Booking</Nav.Link>
+                </Nav>
+                {/* </Col> */}
             </Row>
-            <div className={`dropdown ${isOpen ? "open" : ""}`}>
-                <button className="dropdown-toggle" onClick={toggleDropdown}>
-                    {profileImg ? (
-                        <img src={profileImg} alt="Profile" className="img-profile" />
-                    ) : (
-                        <img src={Placeholder} alt="Profile Placeholder" className="img-profile" />
-                    )}
-                    {isOpen && <img src={iconX} alt="Close" className="icon" />}
-                </button>
-                {isOpen && (
-                    <ul className="dropdown-menu">
-                        <div className="user-info">
-                            <h2>{username}</h2>
-                            {profileImg ? (
-                                <img src={profileImg} alt="Profile" className="img-profile" />
-                            ) : (
-                                <img src={Placeholder} alt="Profile Placeholder" className="img-profile" />
-                            )}
-                        </div>
-                        <div className="links">
-                            <li>
-                                <Link to="/home" onClick={closeDropdown}>Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/profile" onClick={closeDropdown}>My profile</Link>
-                            </li>
-                            <li>
-                                <Link to="/booking" onClick={closeDropdown}>Booking</Link>
-                            </li>
-                        </div>
-                        <button className="btn-logout" onClick={handleLogout}>Log out</button>
-                        <img src={logo} alt="Holidaze Globe Logo" className="logo-image" />
-                    </ul>
-                )}
-            </div>
-        </nav>
+            {/* <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleDropdown} /> */}
+            <Navbar.Collapse id="basic-navbar-nav" className={`dropdown ${isOpen ? "open" : ""}`}>
+                <Nav className="mr-auto"></Nav>
+                <NavDropdown title={isOpen ? null : "Menu"} id="basic-nav-dropdown">
+                    <div className="user-info">
+                        <h2>{username}</h2>
+                        {profileImg ? (
+                            <img src={profileImg} alt="Profile" className="img-profile" />
+                        ) : (
+                            <img src={Placeholder} alt="Profile Placeholder" className="img-profile" />
+                        )}
+                    </div>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item as={Link} to="/home" onClick={closeDropdown}>Home</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/profile" onClick={closeDropdown}>My Profile</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/booking" onClick={closeDropdown}>Booking</NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item onClick={handleLogout}>Log out</NavDropdown.Item>
+                </NavDropdown>
+            </Navbar.Collapse>
+        </Navbar>
     );
 }
