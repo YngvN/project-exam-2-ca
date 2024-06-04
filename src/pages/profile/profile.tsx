@@ -203,8 +203,6 @@ function Profile() {
     const [userData, setUserData] = useState<UserData | null>(null);
     const [isUpdating, setIsUpdating] = useState(false);
     const [successMessage, setSuccessMessage] = useState<string>("");
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
     const [bio, setBio] = useState('');
     const [avatarUrl, setAvatarUrl] = useState('');
     const [bannerUrl, setBannerUrl] = useState('');
@@ -225,8 +223,6 @@ function Profile() {
 
     useEffect(() => {
         if (userData) {
-            setName(userData.data.name || '');
-            setEmail(userData.data.email || '');
             setBio(userData.data.bio || '');
             setAvatarUrl(userData.data.avatar ? userData.data.avatar.url : '');
             setBannerUrl(userData.data.banner ? userData.data.banner.url : '');
@@ -322,21 +318,21 @@ function Profile() {
                         </button>
                         <h2 style={{ textAlign: 'center' }}>{userData.data.name}</h2>
                     </Row>
-                    {!isUpdating && (
-                        <Col className="profile-info-container">
-                            <div>
-                                <h3>Email:</h3>
-                                <p> {userData.data.email}</p>
-                            </div>
-                            <div>
-                                <h3>Bio:</h3>
-                                <p> {userData.data.bio}</p>
-                            </div>
+                    <Col className="profile-info-container">
+                        <div>
+                            <h3>Email:</h3>
+                            <p> {userData.data.email}</p>
+                        </div>
+                        <div>
+                            <h3>Bio:</h3>
+                            <p> {userData.data.bio}</p>
+                        </div>
+                        {!isUpdating && (
                             <div>
                                 <button onClick={() => setIsUpdating(true)} className="btn btn-primary">Update profile</button>
                             </div>
-                        </Col>
-                    )}
+                        )}
+                    </Col>
                     {isUpdating && (
                         <Form onSubmit={handleUpdateProfile}>
                             <FloatingLabel controlId="formAvatarUrl" label="Avatar URL" className="mb-3">
