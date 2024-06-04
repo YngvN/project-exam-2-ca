@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Row, Col } from "react-bootstrap";
 import Placeholder from "../imgProfilePlaceholder.png";
-import iconX from "../iconX.png";
-import logo from "../logo.png";
+// import iconX from "../iconX.png";
+// import logo from "../logo.png";
 
 export function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
@@ -27,9 +27,9 @@ export function Navigation() {
         setIsOpen(false);
     };
 
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
+    // const toggleDropdown = () => {
+    //     setIsOpen(!isOpen);
+    // };
 
     const handleLogout = () => {
         sessionStorage.removeItem('userData');
