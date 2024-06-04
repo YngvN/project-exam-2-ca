@@ -263,7 +263,7 @@ function Profile() {
             });
 
             if (response.ok) {
-                const result = await response.json();
+                // const result = await response.json();
 
                 // Update local state with new user data
                 const updatedUserData: UserData = {
