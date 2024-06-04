@@ -51,8 +51,15 @@ export function Navigation() {
             {/* <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleDropdown} /> */}
             <Navbar.Collapse id="basic-navbar-nav" className={`dropdown ${isOpen ? "open" : ""}`}>
                 <Nav className="mr-auto"></Nav>
-                <NavDropdown title={isOpen ? null : "Menu"} id="basic-nav-dropdown">
-                    <div className="user-info">
+                <NavDropdown title={isOpen ? null : <div className="user-info user-info-button">
+                    <h2 className="username">{username}</h2>
+                    {profileImg ? (
+                        <img src={profileImg} alt="Profile" className="img-profile" />
+                    ) : (
+                        <img src={Placeholder} alt="Profile Placeholder" className="img-profile" />
+                    )}
+                </div>} id="basic-nav-dropdown">
+                    <div className="user-info user-info-dropdown">
                         <h2>{username}</h2>
                         {profileImg ? (
                             <img src={profileImg} alt="Profile" className="img-profile" />
@@ -60,12 +67,10 @@ export function Navigation() {
                             <img src={Placeholder} alt="Profile Placeholder" className="img-profile" />
                         )}
                     </div>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item as={Link} to="/home" onClick={closeDropdown}>Home</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/profile" onClick={closeDropdown}>My Profile</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/booking" onClick={closeDropdown}>Booking</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item onClick={handleLogout}>Log out</NavDropdown.Item>
+                    <NavDropdown.Item className="btn-primary" as={Link} to="/home" onClick={closeDropdown}>Home</NavDropdown.Item>
+                    <NavDropdown.Item className="btn-primary" as={Link} to="/profile" onClick={closeDropdown}>My Profile</NavDropdown.Item>
+                    <NavDropdown.Item className="btn-primary" as={Link} to="/booking" onClick={closeDropdown}>Booking</NavDropdown.Item>
+                    <NavDropdown.Item className="btn-secondary btn-logout" onClick={handleLogout}>Log out</NavDropdown.Item>
                 </NavDropdown>
             </Navbar.Collapse>
         </Navbar>
