@@ -13,7 +13,6 @@ function Login() {
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const navigate = useNavigate();
 
-    // Load user data from storage and prefill the fields
     useEffect(() => {
         const storedUserData = localStorage.getItem('userData') || sessionStorage.getItem('userData');
         if (storedUserData) {
@@ -59,13 +58,11 @@ function Login() {
                 const userData: UserData = await response.json();
                 console.log('Login successful:', userData);
 
-                // Create API Key
                 console.log('Calling createApiKey...');
                 const apiKey = await createApiKey(userData);
 
                 if (apiKey) {
                     console.log('API Key created:', apiKey);
-                    console.log('API Key in UserData:', userData.apiKey); // Correct access to apiKey
 
                     if (rememberMe) {
                         localStorage.setItem('userData', JSON.stringify(userData));
@@ -95,9 +92,13 @@ function Login() {
             setErrorMessage('Login failed: ' + (error.message || 'Unknown error'));
         }
     };
+
     return (
         <Form onSubmit={handleLogin}>
-            <FloatingLabel controlId='formBasicEmail' label='Email address'>
+            {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+            {successMessage && <Alert variant="success">{successMessage}</Alert>}
+
+            <FloatingLabel controlId='formBasicEmail' label='Email address' className="mb-3">
                 <Form.Control
                     type='email'
                     placeholder='Enter email'
@@ -106,7 +107,7 @@ function Login() {
                 />
             </FloatingLabel>
 
-            <FloatingLabel controlId='formBasicPassword' label='Password'>
+            <FloatingLabel controlId='formBasicPassword' label='Password' className="mb-3">
                 <Form.Control
                     type='password'
                     placeholder='Password'

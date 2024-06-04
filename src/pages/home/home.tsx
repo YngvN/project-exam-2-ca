@@ -1,6 +1,6 @@
 import React from "react";
 import VenueList from "./venueList";
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 
 
 function Home() {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Navbar, Nav, NavDropdown, Row, Col } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Row } from "react-bootstrap";
 import Placeholder from "../imgProfilePlaceholder.png";
 // import iconX from "../iconX.png";
 // import logo from "../logo.png";
